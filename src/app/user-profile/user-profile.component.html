@@ -1,0 +1,16 @@
+
+<div *ngIf="auth.user$ | async; then authenticated else guest"> </div>
+
+<ng-template #guest>
+  <div class="form-signin">
+  <h3>Hello There!</h3>
+  <p>Please Sign in to get started</p>
+  <button [disabled]="isLoading" class="btn btn-primary btn-block" (click)="auth.googleSignIn()">
+    {{isLoading ? 'Verifying...' : 'Login with Google'}}
+  </button>
+  </div>
+</ng-template>
+
+<ng-template #authenticated>
+redirecting...
+</ng-template>

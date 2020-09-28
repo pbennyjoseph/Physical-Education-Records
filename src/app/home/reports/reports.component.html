@@ -1,0 +1,27 @@
+<div *ngIf="isLoading; then loading else tables"></div>
+<ng-template #loading>
+  <div class="d-flex justify-content-center align-items-center" style="height:100px;">
+    <div class="card" style="max-width: 18rem;">
+      <div class="card-body">
+        Loading Reports...
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #tables>
+  <div class="mx-3 my-3" *ngFor="let event of events">
+    <div class="card">
+      <div class="card-body">
+        <div>
+          <table class="table table-sm table-bordered">
+            <tr class="d-print-table-row" *ngFor="let item of event | keyvalue">
+              <td><b>{{item.key}}</b></td>
+              :
+              <td>{{item.value}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
